@@ -1,4 +1,21 @@
-# test
-тестовый репозиторий для выполнения задания
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/dbfb76df49e2493a9cea3f95f5be863e)](https://app.codacy.com/gh/VureZ/test/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
-GitHub - это онлайн-платформа для хостинга проектов программного обеспечения и исходного кода. Это популярное место, где разработчики могут создавать, хранить, управлять, общаться и сотрудничать над своими проектами. GitHub предоставляет инструменты для контроля версий, ревизий кода, оперативную комментирование и простую совместную работу между разными членами команды. Современный и открытый характер GitHub позволяет сообществу программистов работать вместе над проектами, сотрудничая и внося свои изменения в код других людей.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите первое число:");
+        short num1 = scanner.nextShort();
+
+        System.out.println("Введите второе число:");
+        short num2 = scanner.nextShort();
+
+        short diff = (short) (num1 - num2);
+        System.out.println("Разность: " + diff);
+
+        short result = (short) (~(num1 | num2));
+        System.out.println("Результат битовых операций: " + result);
+    }
+}
