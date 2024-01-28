@@ -1,21 +1,55 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/dbfb76df49e2493a9cea3f95f5be863e)](https://app.codacy.com/gh/VureZ/test/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
-import java.util.Scanner;
+public class BankAccount {
+    private double balance = 0;
+    private final String accountNumber;
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public BankAccount(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
-        System.out.println("Введите первое число:");
-        short num1 = scanner.nextShort();
+    public void deposit(double amount) {
+        if(amount > 0) {
+            balance += amount;
+        } else {
+            System.out.println("Deposit amount must be positive");
+        }
+    }
 
-        System.out.println("Введите второе число:");
-        short num2 = scanner.nextShort();
+    public void withdraw(double amount) {
+        if(amount > balance) {
+            System.out.println("Insufficient balance");
+        } else {
+            balance -= amount;
+        }
+    }
 
-        short diff = (short) (num1 - num2);
-        System.out.println("Разность: " + diff);
+    public double getBalance() {
+        return balance;
+    }
 
-        short result = (short) (~(num1 | num2));
-        System.out.println("Результат битовых операций: " + result);
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+}
+
+public class Bank {
+    private final List<BankAccount> accounts;
+
+    public Bank() {
+        accounts = new ArrayList<>();
+    }
+
+    public void addAccount(String accountNumber) {
+        accounts.add(new BankAccount(accountNumber));
+    }
+
+    public BankAccount getAccount(String accountNumber) {
+        for(BankAccount account : accounts) {
+            if(account.getAccountNumber().equals(accountNumber)) {
+                return account;
+            }
+        }
+        return null;
     }
 }
